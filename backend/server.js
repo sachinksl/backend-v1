@@ -52,7 +52,9 @@ const nodemailer = require('nodemailer');
 
 const app = express();
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
-const PORT = process.env.PORT || 8000;
+
+//const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 6000;
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -127,9 +129,8 @@ app.use('/api/properties', requireAuth, ensureDbUser, propertiesRouter);
 app.get('/', (_req, res) => res.redirect(FRONTEND_URL));
 
 // start
-app.listen(PORT, () => {
-  console.log(`API on http://localhost:${PORT}`);
-});
+//app.listen(PORT, () => { console.log(`API on http://localhost:${PORT}`); });
+app.listen(PORT, () => console.log(`API on :${PORT}`));
 
 app.use('/api/dashboard', requireAuth, ensureDbUser, dashboardRouter);
 
